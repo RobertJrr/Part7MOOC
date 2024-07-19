@@ -11,35 +11,45 @@ class Container {
         this.minimum = 0;
     }
 
-    public int contains(){
+    public void setContainerLevel(int amount){
+       this.containerLevel = amount;
+    }
+
+    public int getContainerLevel(){
         return this.containerLevel;
     }
 
     public void add(int amount){
-       if(amount < 0){
-           return;
-       }
-
-       containerLevel += amount;
-       if(containerLevel > max){
-           containerLevel = max;
-       }
+        if(amount > minimum){
+            this.containerLevel += amount;
+            if(this.containerLevel > max){
+                containerLevel = max;
+            }
+        }
     }
 
 
     public void remove(int amount){
-        if(amount < 0){
-            return;
-        }
-
-        containerLevel -= amount;
-        if(containerLevel < 0){
-            containerLevel = 0;
+        if(amount > minimum){
+            this.containerLevel -= amount;
+            if(this.containerLevel < minimum){
+                this.containerLevel = minimum;
+            }
         }
     }
 
+    public void move(Container container2, int amount){
+       if(amount > minimum){
+           container2.add(amount);
+           this.remove(amount);
+           if(this.containerLevel < minimum){
+               this.setContainerLevel(minimum);
+           }
+       }
+    }
+
     public String toString(){
-        return "amount of liquid: " + containerLevel + "/100";
+        return containerLevel + "/100";
     }
 
 
