@@ -2,6 +2,19 @@ package Exercise2_LiquidContainersOOP;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("I am in Exercise2 and testing git");
+        Container container = new Container();
+        System.out.println(container);
+
+        container.add(50);
+        System.out.println(container);
+        System.out.println(container.contains());
+
+        container.remove(60);
+        System.out.println(container);
+
+        container.add(200);
+        System.out.println(container);
+
+
     }
 }
