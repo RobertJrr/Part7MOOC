@@ -1,16 +1,18 @@
 package Exercise1_GradeStatistics;
-/*Class will hold a list of scores and do the calculations*/
+/*Class will hold a list of scores and do the calculations and logic*/
 import java.util.ArrayList;
 
 class Course {
     //ArrayList to hold scores of Integer type
     private ArrayList<Integer> scores;
     private ArrayList<Integer> passingScores;
+    private ArrayList<Integer> gradeScore;
 
     //constructor to initialize ArrayList
     public Course(){
         this.scores = new ArrayList<>();
         this.passingScores = new ArrayList<>();
+        this.gradeScore = new ArrayList<>();
     }
 
     //return the list of scores
@@ -20,6 +22,10 @@ class Course {
 
     public ArrayList<Integer> getPassingScores(){
         return this.passingScores;
+    }
+
+    public ArrayList<Integer> getGradeScore() {
+        return gradeScore;
     }
 
     //add the score if it is between 0 and 100 inclusive
@@ -58,37 +64,55 @@ class Course {
         return calculateAverage(this.passingScores);
     }
 
-    public void passPercentage(){
-        double passingPercent = (double)100 * passingScores.size() / scores.size();
-        System.out.println("Passing percentage: %" + passingPercent);
+    //calculating percentage of passing
+    public double passPercentage(){
+        return (double)100 * passingScores.size() / scores.size();
     }
 
-    public void gradeDistribution(){
-        int startingGrade = 5;
-        System.out.println("Grade Distribution: ");
-        while(startingGrade >= 0){
-            System.out.print(startingGrade + ":");
-            for(Integer score : scores){
-                if(score >= 90 && startingGrade == 5){
-                    System.out.print("*");
-                }else if(score >= 80 && score < 90 && startingGrade == 4){
-                    System.out.print("*");
-                }else if(score >= 70 && score < 80 && startingGrade == 3){
-                    System.out.print("*");
-                }else if(score >= 60 && score < 70 && startingGrade == 2){
-                    System.out.print("*");
-                }else if(score >= 50 && score < 60 && startingGrade == 1){
-                    System.out.print("*");
-                }else if(score < 50 && startingGrade == 0){
-                    System.out.print("*");
-                }
+    //converting score to a grade and storing it in list
+    public void convertScoreToGrade(){
+        for(Integer score : scores){
+            if(score >= 90){
+                gradeScore.add(5);
+            }else if(score >= 80 && score < 90){
+                gradeScore.add(4);
+            }else if(score >= 70 && score < 80){
+                gradeScore.add(3);
+            }else if(score >= 60 && score < 70){
+                gradeScore.add(2);
+            }else if(score >= 50 && score < 60){
+                gradeScore.add(1);
+            }else if(score < 50){
+                gradeScore.add(0);
             }
-            System.out.println();
-
-            startingGrade--;
         }
-
-
     }
+
+//    public void gradeDistribution(){
+//        int startingGrade = 5;
+//        System.out.println("Grade Distribution: ");
+//        while(startingGrade >= 0){
+//            System.out.print(startingGrade + ":");
+//            for(Integer score : scores){
+//                if(score >= 90 && startingGrade == 5){
+//                    System.out.print("*");
+//                }else if(score >= 80 && score < 90 && startingGrade == 4){
+//                    System.out.print("*");
+//                }else if(score >= 70 && score < 80 && startingGrade == 3){
+//                    System.out.print("*");
+//                }else if(score >= 60 && score < 70 && startingGrade == 2){
+//                    System.out.print("*");
+//                }else if(score >= 50 && score < 60 && startingGrade == 1){
+//                    System.out.print("*");
+//                }else if(score < 50 && startingGrade == 0){
+//                    System.out.print("*");
+//                }
+//            }
+//            System.out.println();
+//
+//            startingGrade--;
+//        }
+//
+//    }
 
 }
