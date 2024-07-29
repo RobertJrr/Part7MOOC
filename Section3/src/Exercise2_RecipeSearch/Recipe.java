@@ -20,13 +20,23 @@ class Recipe {
         this.ingredients = new ArrayList<>();
     }
 
+    //add ingredients to list
     public void addIngredients(String ingredient){
         ingredients.add(ingredient);
     }
 
+    //get ingredients list for this recipe
+    public ArrayList<String> getIngredientsList(){
+        return this.ingredients;
+    }
+
+    //get cooking time for this recipe
+    public int getCookingTime(){
+        return this.cookingTime;
+    }
 
     @Override
     public String toString(){
-        return this.name +",cooking time: " + this.cookingTime;
+        return this.name + ",cooking time: " + this.cookingTime;
     }
 }

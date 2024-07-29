@@ -7,7 +7,8 @@ import java.util.Scanner;
 class Main {
     public static void main(String[] args) throws FileNotFoundException {
         Scanner scanner = new Scanner(System.in);
-        UserInterface ui = new UserInterface(scanner);
+        CookBook book = new CookBook();
+        UserInterface ui = new UserInterface(scanner,book);
         ui.start();
 
     }
